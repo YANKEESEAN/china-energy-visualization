@@ -77,6 +77,16 @@
     └── 能源5.jpg          # 背景图片
 ```
 
+## 🌐 在线访问
+
+项目已通过 GitHub Pages 部署，点击以下链接访问：
+
+- [首页](https://yankeesean.github.io/china-energy-visualization/)
+- [数据总览](https://yankeesean.github.io/china-energy-visualization/数据总览.html)
+- [能源消费](https://yankeesean.github.io/china-energy-visualization/能源消费.html)
+- [生产与进出口](https://yankeesean.github.io/china-energy-visualization/生产与进出口.html)
+- [关于更多](https://yankeesean.github.io/china-energy-visualization/关于更多.html)
+
 ## 🚀 快速开始
 
 ### 方式一：直接打开
