@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国能源数据可视化</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(-225deg, #231557 0%,
+                    #1b0369 29%, rgb(22, 22, 22)100%);
+        }
+
+        canvas {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <style>
+        .a {
+            position: absolute;
+            top: 280px;
+            left: 400px;
+            width: 650px;
+            height: 180px;
+            border-radius: 20px;
+            border: solid 10px #fff;
+            box-shadow: 0 0 70px rgb(57, 40, 208);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .a::after {
+            content: '';
+            position: absolute;
+            width: 650px;
+            height: 180px;
+            box-shadow: 0 0 5px rgb(57, 40, 208);
+            border-radius: 20px;
+            background-color: rgba(100, 30, 225, .4);
+        }
+
+        .a:hover {
+            animation: a 1.5s;
+        }
+
+        @keyframes a {
+
+            0%,
+            34%,
+            68%,
+            100% {
+                border: solid 10px #fff;
+                box-shadow: 0 0 70px rgb(57, 40, 208);
+            }
+
+            17%,
+            51%,
+            85% {
+                border: solid 10px rgba(6, 16, 78, 0.5);
+                box-shadow: 0 0 90px rgba(93, 139, 224, 0.8);
+            }
+        }
+
+        .b,
+        .b::before {
+            z-index: 999;
+            color: #fff;
+            position: absolute;
+            font-size: 65px;
+            font-family: '华文中宋';
+            font-weight: 800;
+            letter-spacing: 12px;
+            top: 10px;
+        }
+
+        .b::before {
+            content:
+                '中 国 能 源';
+            text-shadow: -5px -5px 0px rgb(211, 250, 9), 5px 5px 0px rgb(25, 10, 240);
+            clip-path: inset(100% 0px 0px 0px);
+            animation: move 2s steps(2) infinite;
+        }
+
+        .g,
+        .g::before {
+            z-index: 999;
+            color: #fff;
+            position: absolute;
+            font-size: 65px;
+            font-family: '华文中宋';
+            font-weight: 800;
+            letter-spacing: 12px;
+            bottom: 10px;
+        }
+
+        .g::before {
+            content:
+                '数 据 可 视 化';
+            text-shadow: -5px -5px 0px rgb(211, 250, 9), 5px 5px 0px rgb(25, 10, 240);
+            clip-path: inset(100% 0px 0px 0px);
+            animation: move 2s steps(2) infinite;
+        }
+
+
+        .a:hover .b::before {
+            animation: move 2s steps(2);
+        }
+
+        .a:hover .g::before {
+            animation: move 2s steps(2);
+        }
+
+        @keyframes move {
+            0% {
+                clip-path: inset(80% 0px 0px 0px);
+                transform: translate(-20px, -10px)
+            }
+
+            10% {
+                clip-path: inset(10% 0px 85% 0px);
+                transform: translate(10px, 10px)
+            }
+
+            20% {
+                clip-path: inset(80% 0px 0px 0px);
+                transform: translate(-10px, 10px)
+            }
+
+            30% {
+                clip-path: inset(10% 0px 85% 0px);
+                transform: translate(0px, 5px)
+            }
+
+            40% {
+                clip-path: inset(50% 0px 30% 0px);
+                transform: translate(-5px, 0px)
+            }
+
+            50% {
+                clip-path: inset(10% 0px 30% 0px);
+                transform: translate(5px, 0px)
+            }
+
+            60% {
+                clip-path: inset(40% 0px 30% 0px);
+                transform: translate(5px, 10px)
+            }
+
+            70% {
+                clip-path: inset(50% 0px 30% 0px);
+                transform: translate(-10px, 10px)
+            }
+
+            80% {
+                clip-path: inset(80% 0px 5% 0px);
+                transform: translate(20px, -10px)
+            }
+
+            90% {
+                clip-path: inset(80% 0px 0px 0px);
+                transform: translate(-10px, 0px)
+            }
+
+            100% {
+                clip-path: inset(80% 0px 0px 0px);
+                transform: translate(0px, 0px)
+            }
+        }
+    </style>
+    <style>
+        .c {
+            /*生产与进出口*/
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font: 60px '楷体';
+            color: rgb(128, 128, 150);
+            letter-spacing: -10px;
+            cursor: pointer;
+        }
+
+        .c:link {
+            color: rgb(116, 116, 146)
+        }
+
+        .c span {
+            transition: .5s;
+            transition-delay: calc(var(--i)*.05s);
+        }
+
+        .c:hover span {
+            color: #fff;
+            text-shadow:
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 50px #fff,
+                0 0 80px #fff;
+            font: 100px '楷体';
+        }
+
+
+        .d {
+            /*能源消费*/
+            position: absolute;
+            top: 10px;
+            left: 580px;
+            font: 60px '楷体';
+            color: rgb(147, 145, 165);
+            letter-spacing: -10px;
+            cursor: pointer;
+        }
+
+        .d:link {
+            color: rgb(143, 142, 165);
+        }
+
+        .d span {
+            transition: .5s;
+            transition-delay: calc(var(--i)*.05s);
+        }
+
+        .d:hover span {
+            color: #fff;
+            text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 50px #fff,
+                0 0 80px #fff;
+            font: 90px '楷体';
+        }
+
+        .e {
+            /*数据总览*/
+            position: absolute;
+            top: 140px;
+            left: 100px;
+            font: 60px '楷体';
+            color: rgb(128, 128, 155);
+            letter-spacing: -7px;
+            cursor: pointer;
+        }
+
+        .e:link {
+            color: rgb(134, 134, 164);
+        }
+
+        .e span {
+            transition: .5s;
+            transition-delay: calc(var(--i)*.05s);
+        }
+
+        .e:hover span {
+            color: #fff;
+            text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 50px #fff,
+                0 0 80px #fff;
+            font: 90px '楷体';
+        }
+
+        .f {
+            /*关于我们*/
+            position: absolute;
+            top: 120px;
+            left: 650px;
+            font: 60px '楷体';
+            color: rgb(133, 132, 159);
+            letter-spacing: -7px;
+            cursor: pointer;
+        }
+
+        .f:link {
+            color: rgb(131, 137, 156);
+        }
+
+        .f span {
+            transition: .5s;
+            transition-delay: calc(var(--i)*.05s);
+        }
+
+        .f:hover span {
+            color: #fff;
+            text-shadow: 0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 30px #fff,
+                0 0 50px #fff,
+                0 0 80px #fff;
+            font: 90px '楷体';
+        }
+    </style>
+    <style>
+        .h {
+            /*提示*/
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            font: 25px '华文仿宋';
+            color: rgba(181, 190, 247, 0.846);
+            letter-spacing: 0px;
+            cursor: pointer;
+        }
+    </style>
+    <style>
+        span1 {
+            user-select: none;
+            cursor: default;
+            font-size: 20px;
+            color: rgba(248, 231, 255);
+            position: absolute;
+            transition: 1s;
+            font: 20px '华文仿宋';
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas></canvas>
+
+</body>
+
+<body>
+    <div class="a">
+        <div class="b"><span>
+                中 国 能 源 <br /> <br /> <br />
+            </span></div>
+        <div class="g"><span>
+                数 据 可 视 化
+            </span></div>
+        <script>
+            Math.floor
+        </script>
+    </div>
+</body>
+
+<body>
+    <div class="e">
+        <a class="e" href="数据总览.html" style="text-decoration:none;">
+            <span style="--i:1">数</span>
+            <span style="--i:2">据</span>
+            <span style="--i:3">总</span>
+            <span style="--i:3">览</span>
+        </a>
+    </div>
+    <div class="d">
+        <a class="d" href="能源消费.html" style="text-decoration:none;">
+            <span style="--i:1">能</span>
+            <span style="--i:2">源</span>
+            <span style="--i:3">消</span>
+            <span style="--i:4">费</span>
+            <span style="--i:5">数</span>
+            <span style="--i:6">据</span>
+        </a>
+    </div>
+    <div class="c">
+        <a class="c" href="生产与进出口.html" style="text-decoration:none;">
+            <span style="--i:1">生</span>
+            <span style="--i:2">产</span>
+            <span style="--i:3">与</span>
+            <span style="--i:4">进</span>
+            <span style="--i:5">出</span>
+            <span style="--i:5">口</span>
+        </a>
+    </div>
+    <div class="f">
+        <a class="f" href="关于更多.html" style="text-decoration:none;">
+            <span style="--i:1">关</span>
+            <span style="--i:2">于</span>
+            <span style="--i:3">更</span>
+            <span style="--i:4">多</span>
+        </a>
+    </div>
+    <div class="h">
+        <i>点击空白处查看人民日报关于能源的评论</i><br />
+    </div>
+</body>
+
+<script>
+    var arr = ["放眼中华大地，清洁能源设施随处可见，呈现出能源高质量发展的勃勃生机。",
+        "深入推进能源革命，坚持推进能源结构、产业结构调整，把能源的饭碗牢牢端在自己手里，一定能为实现中华民族伟大复兴提供坚实可靠的能源保障。",
+        "能源是工业的粮食、国民经济的命脉，关系人类生存和发展，攸关国计民生和国家安全。",
+        "“要深入推动能源革命，加快建设能源强国”，为新时代中国能源高质量发展指明方向。",
+        "推动能源生产和消费革命，兜住重要能源国内生产自给的战略底线，有效保障国家能源安全，是能源强国建设的必然要求。",
+        "从生产看，我国已形成煤、油、气、核、新能源、可再生能源多轮驱动的能源供应体系，既注重提升能源自给率，也注重优先发展非化石能源。",
+        "从消费看，我国建立完善能源消费强度和总量双控制度，把节能指标纳入生态文明、绿色发展等绩效评价指标体系，推动能源消费结构向清洁低碳加快转变。",
+        "供给“开源”，消费“节流”，双向发力，我国能源安全保障能力进一步提升，有力支撑了经济社会持续健康发展。",
+        "科技决定能源未来，科技创造未来能源。",
+        "充分发挥科技创新第一动力作用，是提高能源自主保障能力的战略举措，也是推动能源结构转型的必然选择。",
+        "我国能源行业着力提升自主创新能力和重大装备技术水平，一大批能源新技术、新模式、新业态蓬勃兴起，能源领域科技创新实现了从“跟跑、并跑”向“创新、主导”的加速转变。",
+    ]
+    document.onclick = function (x) {
+        // 创建元素节点对象
+        var span1 = document.createElement("span1")
+        // 获取当前鼠标的坐标
+        span1.style.left = x.clientX + "px"
+        span1.style.top = x.clientY + "px"
+        // 让span的值为arr数组内随机的一个值
+        span1.innerHTML = arr[Math.floor(Math.random() * arr.length)]
+        // 设置span的动画效果
+        setTimeout(function () {
+            span1.style.opacity = "1"
+            span1.style.transform = "translateY(-100px)"
+        }, 100)
+        setTimeout(function () {
+            span1.style.opacity = "0"
+            span1.style.transform = "translateY(-230px)"
+        }, 1500)
+        // 清掉opacort为0的span
+        var chi = document.getElementsByClassName("span")
+        for (var i = 0; i < chi.length; i++) {
+            if (chi[i].style.opacity === "0") {
+                document.body.removeChild(chi[i])
+            }
+        }
+
+        document.body.appendChild(span1)
+    }
+</script>
+
+<script>
+
+    // 定义星星的颜色
+    const STAR_COLOR = 'rgb(247, 247, 220)';
+    // 定义星星的大小
+    const STAR_SIZE = 2;
+    // 定义星星的最小缩放比例
+    const STAR_MIN_SCALE = 0.2;
+    // 定义溢出阈值
+    const OVERFLOW_THRESHOLD = 50;
+    // 定义星星的数量
+    const STAR_COUNT = (window.innerWidth + window.innerHeight) / 7;
+    // 获取canvas元素
+    const canvas = document.querySelector('canvas');
+    // 获取canvas的绘图上下文
+    const context = canvas.getContext('2d');
+    // 定义缩放比例
+    let scale = 1; // device pixel ratio
+    // 定义宽度和高度
+    let width;
+    let height;
+    // 定义星星数组
+    let stars = [];
+    // 定义鼠标指针的位置
+    let pointerX;
+    let pointerY;
+    // 定义速度对象
+    let velocity = { x: 0, y: 0, tx: 0, ty: 0, z: 0.0009 };
+    // 定义触摸输入标志
+    let touchInput = false;
+    // 生成星星
+    generate();
+    // 调整大小.cddc
+    resize();
+    // 运行动画
+    step();
+    // 当窗口大小改变时，重新调整大小
+    window.onresize = resize;
+    // 当鼠标在canvas上移动时，更新鼠标指针位置
+    canvas.onmousemove = onMouseMove;
+    // 当触摸屏在canvas上移动时，更新鼠标指针位置
+    canvas.ontouchmove = onTouchMove;
+    // 当触摸屏离开canvas时，更新鼠标指针位置
+    canvas.ontouchend = onMouseLeave;
+    // 当鼠标离开文档时，更新鼠标指针位置
+    document.onmouseleave = onMouseLeave;
+    // 生成星星
+    function generate() {
+        for (let i = 0; i < STAR_COUNT; i++) {
+            stars.push({
+                x: 0,
+                y: 0,
+                z: STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE),
+            });
+        }
+    }
+    // 将星星放置到随机位置
+    function placeStar(star) {
+        star.x = Math.random() * width;
+        star.y = Math.random() * height;
+    }
+    // 回收星星并重新放置到新的位置
+    function recycleStar(star) {
+        // 初始化方向为 'z'
+        let direction = 'z';
+        // 获取速度的绝对值
+        let vx = Math.abs(velocity.x);
+        let vy = Math.abs(velocity.y);
+        // 如果速度的绝对值大于1，则根据速度的大小随机确定方向
+        if (vx > 1 || vy > 1) {
+            let axis;
+            // 如果水平速度大于垂直速度，则根据水平速度的比例随机确定水平或垂直方向
+            if (vx > vy) {
+                axis = Math.random() < vx / (vx + vy) ? 'h' : 'v';
+            } else {
+                axis = Math.random() < vy / (vx + vy) ? 'v' : 'h';
+            }
+            // 根据方向确定具体的移动方向
+            if (axis === 'h') {
+                direction = velocity.x > 0 ? 'l' : 'r';
+            } else {
+                direction = velocity.y > 0 ? 't' : 'b';
+            }
+        }
+        // 随机设置星星的缩放比例.cddc
+        star.z = STAR_MIN_SCALE + Math.random() * (1 - STAR_MIN_SCALE);
+        // 根据方向设置星星的位置
+        if (direction === 'z') {
+            // 如果方向为 'z'，则将星星放置在屏幕中心
+            star.z = 0.1;
+            star.x = Math.random() * width;
+            star.y = Math.random() * height;
+        } else if (direction === 'l') {
+            // 如果方向为 'l'，则将星星放置在屏幕左侧
+            star.x = -OVERFLOW_THRESHOLD;
+            star.y = height * Math.random();
+        } else if (direction === 'r') {
+            // 如果方向为 'r'，则将星星放置在屏幕右侧
+            star.x = width + OVERFLOW_THRESHOLD;
+            star.y = height * Math.random();
+        } else if (direction === 't') {
+            // 如果方向为 't'，则将星星放置在屏幕顶部
+            star.x = width * Math.random();
+            star.y = -OVERFLOW_THRESHOLD;
+        } else if (direction === 'b') {
+            // 如果方向为 'b'，则将星星放置在屏幕底部
+            star.x = width * Math.random();
+            star.y = height + OVERFLOW_THRESHOLD;
+        }
+    }
+    // 调整大小
+    function resize() {
+        // 获取设备像素比例
+        scale = window.devicePixelRatio || 1;
+        // 设置画布的宽度和高度
+        width = window.innerWidth * scale;
+        height = window.innerHeight * scale;
+        canvas.width = width;
+        canvas.height = height;
+        // 将所有星星重新放置到屏幕上
+        stars.forEach(placeStar);
+    }
+    // 动画的每一帧
+    function step() {
+        // 清空画布
+        context.clearRect(0, 0, width, height);
+        // 更新星星的位置和速度
+        update();
+        // 绘制星星
+        render();
+        // 请求下一帧动画
+        requestAnimationFrame(step);
+    }
+    // 更新星星的位置和速度
+    function update() {
+        // 缓动速度
+        velocity.tx *= 0.96;
+        velocity.ty *= 0.96;
+        // 更新速度
+        velocity.x += (velocity.tx - velocity.x) * 0.8;
+        velocity.y += (velocity.ty - velocity.y) * 0.8;
+        // 遍历所有星星
+        stars.forEach((star) => {
+            // 根据速度和缩放比例更新星星的位置
+            star.x += velocity.x * star.z;
+            star.y += velocity.y * star.z;
+            // 根据速度和缩放比例更新星星的位置（使星星围绕屏幕中心旋转）
+            star.x += (star.x - width / 2) * velocity.z * star.z;
+            star.y += (star.y - height / 2) * velocity.z * star.z;
+            // 更新星星的缩放比例
+            star.z += velocity.z;
+            // 如果星星超出屏幕范围，则重新放置到屏幕上.cddc
+            if (
+                star.x < -OVERFLOW_THRESHOLD ||
+                star.x > width + OVERFLOW_THRESHOLD ||
+                star.y < -OVERFLOW_THRESHOLD ||
+                star.y > height + OVERFLOW_THRESHOLD
+            ) {
+                recycleStar(star);
+            }
+        });
+    }
+    // 绘制星星
+    function render() {
+        // 遍历所有星星
+        stars.forEach((star) => {
+            // 设置绘制星星的样式
+            context.beginPath();
+            context.lineCap = 'round';
+            context.lineWidth = STAR_SIZE * star.z * scale;
+            context.globalAlpha = 0.5 + 0.5 * Math.random();
+            context.strokeStyle = STAR_COLOR;
+            // 绘制星星的路径
+            context.beginPath();
+            context.moveTo(star.x, star.y);
+            // 计算星星的尾巴坐标
+            let tailX = velocity.x * 2;
+            let tailY = velocity.y * 2;
+            // 如果尾巴坐标的绝对值小于0.1，则设置为0.5
+            if (Math.abs(tailX) < 0.1) tailX = 0.5;
+            if (Math.abs(tailY) < 0.1) tailY = 0.5;
+            // 绘制星星的尾巴
+            context.lineTo(star.x + tailX, star.y + tailY);
+            context.stroke();
+        });
+    }
+    // 移动鼠标指针
+    function movePointer(x, y) {
+        // 如果之前有记录鼠标指针的位置，则计算鼠标指针的移动距离，并更新速度
+        if (typeof pointerX === 'number' && typeof pointerY === 'number') {
+            let ox = x - pointerX;
+            let oy = y - pointerY;
+            velocity.tx = velocity.tx + (ox / 8) * scale * (touchInput ? 1 : -1);
+            velocity.ty = velocity.ty + (oy / 8) * scale * (touchInput ? 1 : -1);
+        }
+        // 更新鼠标指针的位置
+        pointerX = x;
+        pointerY = y;
+    }
+    // 当鼠标在canvas上移动时的事件处理函数
+    function onMouseMove(event) {
+        touchInput = false;
+        movePointer(event.clientX, event.clientY);
+    }
+    // 当触摸屏在canvas上移动时的事件处理函数
+    function onTouchMove(event) {
+        touchInput = true;
+        movePointer(event.touches[0].clientX, event.touches[0].clientY, true);
+        event.preventDefault();
+    }
+    // 当鼠标离开canvas时的事件处理函数
+    function onMouseLeave() {
+        pointerX = null;
+        pointerY = null;
+    }
+</script>
+
+</html>

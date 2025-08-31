@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>能源生产与进出口数据可视化</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/comon2.css">
+</head>
+<script type="text/javascript" src="js/echarts.js"></script>
+<script language="JavaScript" src="js/js3.js"></script>
+
+<body>
+    <div class="canvas" style="opacity: .7">
+        <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
+    </div>
+    <div class="loading">
+        <div class="loadbox"> <img src="images/loading.gif"> 页面加载中... </div>
+    </div>
+    <div class="head">
+        <h1>能源生产与进出口数据可视化</h1>
+        <div class="menu pulll_left">
+            <ul>
+                <li><a href="首页.html">返回首页</a></li>
+            </ul>
+        </div>
+        <div class="time" id="showTime">2024/3/27 17:00:12</div>
+        <script>
+            var t = null;
+            t = setTimeout(time, 1000);//開始运行
+            function time() {
+                clearTimeout(t);//清除定时器
+                dt = new Date();
+                var y = dt.getFullYear();
+                var mt = dt.getMonth() + 1;
+                var day = dt.getDate();
+                var h = dt.getHours();//获取时
+                var m = dt.getMinutes();//获取分
+                var s = dt.getSeconds();//获取秒
+                var t = null;
+                document.getElementById("showTime").innerHTML = y + "/" + Appendzero(mt) + "/" + Appendzero(day) + " " + Appendzero(h) + ":" + Appendzero(m) + ":" + Appendzero(s) + "";
+                function Appendzero(obj) {
+                    if (obj < 10) return "0" + "" + obj;
+                    else return obj;
+                }
+                t = setTimeout(time, 1000); //设定定时器，循环运行     
+            }
+        </script>
+    </div>
+    <div class="mainbox">
+        <ul class="clearfix">
+            <li>
+                <div class="boxall" style="height: calc(30% - .15rem)">
+                    <div class="alltitle">人均能源生产量</div>
+                    <div class="boxnav" id="">
+                        <table cellspacing="0">
+                            <tr>
+                                <th></th>
+                                <th>矿产</th>
+                                <th>单位</th>
+                                <th>生产量</th>
+                            </tr>
+                            <tr>
+                                <th>1</th>
+                                <td>原煤</td>
+                                <td>千克</td>
+                                <td>2921</td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td>原油</td>
+                                <td>千克</td>
+                                <td>141</td>
+                            </tr>
+                            <tr>
+                                <th>3</th>
+                                <td>电力</td>
+                                <td>千瓦小时</td>
+                                <td>6043</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="boxall" style="height: calc(70% - .15rem)">
+                    <div class="alltitle">主要清洁能源发电量及增长速度</div>
+                    <div class="boxnav" id="echarts5"></div>
+                </div>
+            </li>
+            <li>
+                <div class="boxall" style="height: calc(100% - .15rem)">
+                    <div class="alltitle">主要能源品种进出口量（单位：万吨）</div>
+                    <div class="boxnav" id="echart3"></div>
+                </div>
+
+            </li>
+            <li>
+                <div class="boxall" style="height: calc(40% - .15rem)">
+                    <div class="alltitle">发电量（单位：亿千瓦时）</div>
+                    <div class="boxnav" id="echarts2"></div>
+
+                </div>
+                <div class="boxall" style="height: calc(60% - .15rem)">
+                    <div class="alltitle">主要高耗能产品进出口量（单位：万吨）</div>
+                    <div class=" boxnav " id="echarts4"></div>
+                    <div class="subtitle">钢材为2023年数据，铜材、铝材为2020年数据</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

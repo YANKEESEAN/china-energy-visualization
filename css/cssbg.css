@@ -1,0 +1,234 @@
+@charset "utf-8";
+.e0 {
+    background-color: rgba(139, 169, 240, 0.676);
+    color: #000000;
+    padding: 10px;
+    height: 20px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font: 18px '华文中宋';
+    letter-spacing: 0px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.e0:active {
+    background-color: #bdbc9d;
+}
+
+.e1 {
+    background-color: rgba(139, 169, 240, 0.676);
+    color: #000000;
+    padding: 10px;
+    height: 20px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 0px;
+    left: 92px;
+    font: 18px '华文中宋';
+    letter-spacing: 0px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.e1:active {
+    background-color: #bdbc9d;
+}
+
+.e2 {
+    background-color: rgba(139, 169, 240, 0.676);
+    color: #000000;
+    padding: 10px;
+    height: 20px;
+    text-decoration: none;
+    position: absolute;
+    top: 0px;
+    left: 184px;
+    font: 18px '华文中宋';
+    letter-spacing: 0px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.e2:active {
+    background-color: #bdbc9d;
+}
+
+.e3 {
+    background-color: rgba(139, 169, 240, 0.676);
+    color: #000000;
+    padding: 10px;
+    height: 20px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 0px;
+    left: 276px;
+    font: 18px '华文中宋';
+    letter-spacing: 0px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.e3:active {
+    background-color: #bdbc9d;
+}
+
+.e4 {
+    background-color: rgba(139, 169, 240, 0.676);
+    color: #000000;
+    padding: 10px;
+    height: 20px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 0px;
+    left: 368px;
+    font: 18px '华文中宋';
+    letter-spacing: 0px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.e4:active {
+    background-color: #bdbc9d;
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.shell {
+    height: 100vh;
+    overflow-x: hidden;
+    perspective: 3px;
+}
+
+.shell div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: 30px;
+    letter-spacing: 2px;
+}
+
+.image {
+    transform: translateZ(-1px) scale(1.6);
+    background-size: cover;
+    height: 100vh;
+    z-index: -1;
+}
+
+.image1 {
+    transform: translateZ(-1px) scale(2);
+    background-size: cover;
+    height: 100vh;
+    z-index: -1;
+}
+
+.text0 {
+    height: 40vh;
+    background-color: rgb(194, 207, 239);
+    font-family: "方正姚体";
+    padding: 10px;
+    letter-spacing: 10px;
+    font-size: 27px;
+    color: rgb(16, 42, 98)
+}
+
+.text1 {
+    /*创作背景*/
+    height: 50vh;
+    background-color: rgb(16, 86, 107);
+    font-family: "华文中宋";
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(220, 235, 255)
+}
+
+.text2 {
+    /*能源概况*/
+    height: 50vh;
+    background-color: rgb(41, 80, 146);
+    font-family: "华文中宋";
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(218, 233, 254)
+}
+
+.text3 {
+    /*数据来源*/
+    height: 50vh;
+    background-color: rgb(48, 53, 113);
+    font-family: "华文中宋";
+    padding: 10px;
+    font-size: 25px;
+    color: rgb(179, 208, 247)
+}
+
+.text4 {
+    /*联系我们*/
+    height: 50vh;
+    background-color: rgb(58, 70, 108);
+    font-family: "华文中宋";
+    padding: 10px;
+    font-size: 45px;
+    color: rgb(186, 164, 69)
+}
+
+.heading0 {
+    /*title*/
+    z-index: -1;
+    transform: translateY(-60vh) translateZ(1px);
+    color: rgb(49, 78, 104);
+    text-shadow: 0 0 10px rgb(174, 203, 234),
+        0 0 20px #fff,
+        0 0 30px #fff,
+        0 0 50px #fff,
+        0 0 80px #fff;
+    font-family: "华文新魏";
+    font-size: 50px;
+}
+
+.heading1 {
+    /*创作背景*/
+    z-index: -1;
+    transform: translateY(-30vh) translateZ(1px);
+    color: #d4f2ff;
+    font-family: "华文中宋";
+    font-size: 40px;
+}
+
+.heading2 {
+    /*能源概况*/
+    z-index: -1;
+    transform: translateY(-30vh) translateZ(1px);
+    color: #eeff90;
+    font-family: "华文中宋";
+    font-size: 35px;
+}
+
+.heading3 {
+    /*数据来源*/
+    z-index: -1;
+    transform: translateY(-30vh) translateZ(1px);
+    color: rgb(200, 234, 251);
+    font-family: "华文中宋";
+    font-size: 35px;
+}
+
+.heading4 {
+    /*联系我们*/
+    z-index: -1;
+    transform: translateY(-30vh) translateZ(1px);
+    color: rgb(250, 188, 1);
+    font-family: "华文中宋";
+    font-size: 25px;
+}
