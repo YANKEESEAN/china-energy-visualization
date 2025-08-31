@@ -64,9 +64,9 @@ china-energy-visualization/
 │   ├── area_echarts.js    # Regional charts logic
 │   └── index.html         # Background effects
 └── images/                # Images directory
-    ├── bg.jpg          # 背景图片
-    ├── bg1.jpg          # 背景图片
-    ├── bg2.jpg          # 背景图片
+    ├── bg.jpg          # Background images
+    ├── bg1.jpg          # Background images
+    ├── bg2.jpg          # Background images
     ├── loading.gif        # Loading animation
     ├── 能源1.jpg          # Background images
     ├── 能源2.jpg          # Background images
