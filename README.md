@@ -45,7 +45,7 @@
 
 ```
 中国能源数据可视化/
-├── index.html              # 首页（星空动画效果）
+├── 首页.html              # 首页（星空动画效果）
 ├── 数据总览.html           # 能源数据总览页面
 ├── 能源消费.html           # 能源消费数据分析
 ├── 生产与进出口.html       # 生产与进出口数据
@@ -66,6 +66,9 @@
 │   ├── area_echarts.js    # 区域图表逻辑
 │   └── index.html         # 背景特效相关
 └── images/                # 图片资源目录
+    ├── bg.jpg          # 背景图片
+    ├── bg1.jpg          # 背景图片
+    ├── bg2.jpg          # 背景图片
     ├── loading.gif        # 加载动画
     ├── 能源1.jpg          # 背景图片
     ├── 能源2.jpg          # 背景图片
@@ -129,7 +132,6 @@ npx http-server
 ---
 
 **数据驱动决策，可视化洞察未来** 📈
-```
 
 ## 💡 使用说明：
 
@@ -142,3 +144,4 @@ npx http-server
 git add README.md
 git commit -m "添加项目说明文档"
 git push
+```
