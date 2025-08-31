@@ -81,7 +81,7 @@
 
 项目已通过 GitHub Pages 部署，点击以下链接访问：
 
-- [首页](https://yankeesean.github.io/china-energy-visualization/)
+- [首页](https://yankeesean.github.io/china-energy-visualization/首页.html)
 - [数据总览](https://yankeesean.github.io/china-energy-visualization/数据总览.html)
 - [能源消费](https://yankeesean.github.io/china-energy-visualization/能源消费.html)
 - [生产与进出口](https://yankeesean.github.io/china-energy-visualization/生产与进出口.html)
