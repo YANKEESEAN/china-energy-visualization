@@ -1,4 +1,3 @@
-```markdown
 # 中国能源数据可视化平台
 
 一个基于 HTML + ECharts 的能源数据可视化大屏项目，展示中国能源生产、消费、进出口等多维度数据，提供直观的数据可视化展示。
@@ -143,4 +142,3 @@ npx http-server
 git add README.md
 git commit -m "添加项目说明文档"
 git push
-```
