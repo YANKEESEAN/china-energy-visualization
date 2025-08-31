@@ -1,3 +1,162 @@
+# China Energy Data Visualization Platform
+
+An interactive data visualization dashboard built with HTML + ECharts, showcasing multi-dimensional energy data including production, consumption, import, and export statistics across China.
+
+## 🌟 Features
+
+### 📊 Data Overview
+- National primary energy production vs consumption comparison
+- Visualized major energy mineral reserves
+- Energy industry investment trends
+- Energy elasticity coefficient analysis
+- China map regional data distribution
+
+### 🔋 Energy Consumption
+- Total energy consumption growth trends
+- Per capita energy consumption statistics
+- Residential energy consumption analysis
+- Coal consumption proportion pie chart
+- Detailed daily energy consumption data table
+
+### ⚡ Production & Import/Export
+- Clean energy electricity generation and growth rates
+- Energy product import/export comparisons
+- Electricity generation statistics
+- High-energy-consumption product trade data
+- Per capita energy production data table
+
+### 📖 About Section
+- Project background introduction
+- China energy profile overview
+- Data source references
+- Contact information
+
+## 🛠️ Technology Stack
+
+- **Frontend**: HTML5 + CSS3 + JavaScript
+- **Visualization**: ECharts 5.0+
+- **Libraries**: jQuery
+- **Responsive Design**: Adaptive layout
+- **Effects**: Canvas starry sky animation background
+
+## 📁 Project Structure
+
+```
+china-energy-visualization/
+├── index.html              # Homepage (starry sky animation)
+├── 数据总览.html           # Data overview page
+├── 能源消费.html           # Energy consumption analysis
+├── 生产与进出口.html       # Production & import/export data
+├── 关于更多.html           # Project introduction page
+├── README.md              # Project documentation
+├── css/                   # Styles directory
+│   ├── comon0.css         # Data overview styles
+│   ├── comon1.css         # Energy consumption styles
+│   ├── comon2.css         # Production & trade styles
+│   └── cssbg.css          # About page background styles
+├── js/                    # JavaScript directory
+│   ├── echarts.js         # ECharts visualization library
+│   ├── jquery.js          # jQuery library
+│   ├── js.js              # Data overview charts logic
+│   ├── js2.js             # Energy consumption charts logic
+│   ├── js3.js             # Production & trade charts logic
+│   ├── china.js           # China map data
+│   ├── area_echarts.js    # Regional charts logic
+│   └── index.html         # Background effects
+└── images/                # Images directory
+    ├── loading.gif        # Loading animation
+    ├── 能源1.jpg          # Background images
+    ├── 能源2.jpg          # Background images
+    ├── 能源3.jpg          # Background images
+    ├── 能源4.jpg          # Background images
+    └── 能源5.jpg          # Background images
+```
+
+## 🚀 Quick Start
+
+### Method 1: Direct Open
+1. Download project files
+2. Open `index.html` directly in browser
+3. Click navigation buttons to access sub-pages
+
+### Method 2: Local Server (Recommended)
+```bash
+# Using Python built-in server
+python -m http.server 8000
+
+# Or using Node.js http-server
+npx http-server
+
+# Then visit http://localhost:8000
+```
+
+## 📊 Data Sources
+
+- National Bureau of Statistics - Annual Energy Data
+- 《2023 China Mineral Resources Report》
+- 《2023 China Natural Resources Bulletin》
+- 《2022 National Mineral Resources Reserve Statistics》
+
+## ✨ Special Features
+
+- **Dynamic Starry Background**: Interactive canvas animation on homepage
+- **Real-time Clock**: Live time display on every page
+- **Responsive Design**: Adapts to different screen sizes
+- **Data Visualization**: Multiple chart types using ECharts
+- **Interactive Experience**: Click anywhere on homepage to display random energy-related quotes
+
+## 🎯 Use Cases
+
+- Energy data analysis and presentation
+- Educational demonstrations
+- Data visualization learning reference
+- Large-screen data display projects
+
+## 👥 Authors
+
+- **Developer**: YANKEESEAN
+
+## 📄 License
+
+This project is for learning and demonstration purposes only. Data sources are from public channels. Please credit the original source when using.
+
+## 🤝 Contributing
+
+Welcome to submit Issues and Pull Requests to improve this project!
+
+---
+
+**Data-Driven Decisions, Visualization for Future Insights** 📈
+
+## 🌐 Live Demo
+
+Available via GitHub Pages:
+- [Homepage](https://yankeesean.github.io/china-energy-visualization/首页.html)
+- [Data Overview](https://yankeesean.github.io/china-energy-visualization/数据总览.html)
+- [Energy Consumption](https://yankeesean.github.io/china-energy-visualization/能源消费.html)
+- [Production & Trade](https://yankeesean.github.io/china-energy-visualization/生产与进出口.html)
+- [About](https://yankeesean.github.io/china-energy-visualization/关于更多.html)
+
+*Note: Replace `your-username` and `repository-name` with your actual GitHub information.*
+```
+
+## 💡 使用说明：
+
+1. 将文件名中的中文部分可以改为英文（可选）：
+   - `数据总览.html` → `overview.html`
+   - `能源消费.html` → `consumption.html` 
+   - `生产与进出口.html` → `production-trade.html`
+   - `关于更多.html` → `about.html`
+
+2. 保存为 `README.md` 文件
+3. 提交到 GitHub：
+
+```bash
+git add README.md
+git commit -m "Add English documentation"
+git push
+```
+
 # 中国能源数据可视化平台
 
 一个基于 HTML + ECharts 的能源数据可视化大屏项目，展示中国能源生产、消费、进出口等多维度数据，提供直观的数据可视化展示。
