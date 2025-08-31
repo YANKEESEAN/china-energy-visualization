@@ -64,6 +64,9 @@ china-energy-visualization/
 │   ├── area_echarts.js    # Regional charts logic
 │   └── index.html         # Background effects
 └── images/                # Images directory
+    ├── bg.jpg          # 背景图片
+    ├── bg1.jpg          # 背景图片
+    ├── bg2.jpg          # 背景图片
     ├── loading.gif        # Loading animation
     ├── 能源1.jpg          # Background images
     ├── 能源2.jpg          # Background images
@@ -138,7 +141,6 @@ Available via GitHub Pages:
 - [About](https://yankeesean.github.io/china-energy-visualization/关于更多.html)
 
 *Note: Replace `your-username` and `repository-name` with your actual GitHub information.*
-```
 
 ## 💡 使用说明：
 
